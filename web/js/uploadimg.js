@@ -1,50 +1,46 @@
-var i = 0;
 var a = 0;
+var i = 0;
+var b;
+var it=document.getElementById("innerText");
+it.innerText="已选择"+0+"张图片,"+"还可选择"+10+"张图片";
 $(function() {
-    // var img = []; //创建一个空对象用来保存传入的图片
-    var AllowImgFileSize = '1024'; //1兆
     $("#inputs").change(function() {
+        var count = 0;
         var fil = this.files;
         a += fil.length;
         for(var i = 0; i < fil.length; i++) {
             var curr = fil[i].size;
-            if(curr > AllowImgFileSize * 1024) { //当图片大于99兆提示
-                layer.msg("图片文件大小超过限制 请上传小于1M的文件");
+            if(a > 10){
+                alert("选择图片超上限10张！请重新选择图片！")
+                a -= fil.length;
+                break;
             }
-            else {
-                // reads(fil[i]);
-                if(a > 50){
-                    alert("选择图片超上限10张！请重新选择图片！")
-                    a -= fil.length;
-                    break;
+            else if(a == 10){
+                for( var j = i; j < fil.length; j++){
+                    reads(fil[j]);
                 }
-                else if(a == 50){
-                    for( var j = i; j < i + fil.length; j++){
-                        reads(fil[j]);
-                    }
-                    alert("选择图片已达上限10张！将无法继续选择图片！")
-                    $('.uploadDIv').hide();
-                    break;
-                }
-                else{
-                    reads(fil[i]);
-                }
-                // img.push(fil[i]); // 将传入的图片push到空对象中
+                alert("选择图片已达上限10张！将无法继续选择图片！")
+                $('.uploadDIv').hide();
+                var it=document.getElementById("innerText");
+                it.innerText="已选择"+10+"张图片,"+"还可选择"+0+"张图片";
+                break;
             }
+            else{
+                reads(fil[i]);
+            }
+            var it=document.getElementById("innerText");
+            b = 10-a;
+            it.innerText="已选择"+a+"张图片,"+"还可选择"+b+"张图片";
         }
-        // if(a >= 10) { //判断图片的数量，数量不能超过50张
-        //     $('.uploadDIv').hide();
-        //     alert("选择图片已达上限10张！将无法继续选择图片！")
-        // } else {
-        //     $('.uploadDIv').show();
-        // }
     });
 })
 function removethis(i){
-
-    $("#img"+i+"").remove()
-    if($("#uploadBox").children().length<50){
+    $("#img"+i+"").remove();
+    if($("#uploadBox").children().length<10){
         a -= 1;
+        b = 10-a;
+        var it=document.getElementById("innerText");
+        it.innerText="已选择"+a+"张图片,"+"还可选择"+b+"张图片";
         $('.uploadDIv').show();
     }
 }

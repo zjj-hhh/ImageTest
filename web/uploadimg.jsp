@@ -21,7 +21,8 @@
 </div>   <!-- 添加遮罩层 -->
 
 <div class="Box">图片上传</div>
-<div class="Box">(最多可同时上传50张图片进行检测分类)</div>
+<div class="Box">(最多可同时上传10张图片进行检测分类)</div>
+<span class="Box" id="innerText"></span>
 <div class="Box1">
     <div class="productImg">
         <div id="uploadBox"></div>
