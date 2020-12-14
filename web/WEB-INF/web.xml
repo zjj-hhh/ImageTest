@@ -27,6 +27,43 @@
     <servlet-name>helloBarRainfall</servlet-name>
     <url-pattern>/barRainfall.do</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>sendMailServlet</servlet-name>
+    <servlet-class>deal.sendMail.sendMailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sendMailServlet</servlet-name>
+    <url-pattern>/sendMailServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UserInfoList</servlet-name>
+    <servlet-class>wxServlet.UserInfoList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserInfoList</servlet-name>
+    <url-pattern>/UserInfoList</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>deposit</servlet-name>
+    <servlet-class>finishServlet.deposit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deposit</servlet-name>
+    <url-pattern>/deposit</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>buy</servlet-name>
+    <servlet-class>finishServlet.buy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>buy</servlet-name>
+    <url-pattern>/buy</url-pattern>
+  </servlet-mapping>
+
   <servlet>
     <servlet-name>register</servlet-name>
     <servlet-class>deal.register.register</servlet-class>
@@ -34,5 +71,23 @@
   <servlet-mapping>
     <servlet-name>register</servlet-name>
     <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>resetPasswordServlet</servlet-name>
+    <servlet-class>deal.resetPassword.resetPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>resetPasswordServlet</servlet-name>
+    <url-pattern>/resetPasswordServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ImgUploadServlet</servlet-name>
+    <servlet-class>file.ImgUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImgUploadServlet</servlet-name>
+    <url-pattern>/ImgUploadServlet</url-pattern>
   </servlet-mapping>
 </web-app>
