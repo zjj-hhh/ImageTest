@@ -13,13 +13,15 @@ $(function() {
             }
             else {
                 // reads(fil[i]);
-                if(a > 10){
+                if(a > 50){
                     alert("选择图片超上限10张！请重新选择图片！")
                     a -= fil.length;
                     break;
                 }
-                else if(a == 10){
-                    reads(fil[i]);
+                else if(a == 50){
+                    for( var j = i; j < i + fil.length; j++){
+                        reads(fil[j]);
+                    }
                     alert("选择图片已达上限10张！将无法继续选择图片！")
                     $('.uploadDIv').hide();
                     break;
@@ -41,7 +43,7 @@ $(function() {
 function removethis(i){
 
     $("#img"+i+"").remove()
-    if($("#uploadBox").children().length<10){
+    if($("#uploadBox").children().length<50){
         a -= 1;
         $('.uploadDIv').show();
     }
