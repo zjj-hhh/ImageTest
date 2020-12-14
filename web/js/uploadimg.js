@@ -67,7 +67,7 @@ function toHide() {
 
 function uploadFile(){
     var fileList = document.getElementById("inputs").files;
-    alert("上传图片成功" + fileList.length);
+    alert("上传图片成功");
     for(var i = 0; i < fileList.length; i++){
         var fileObj = fileList[i]; // 获取文件对象
         var FileController = "ImgUploadServlet"; // 接收上传文件的后台地址

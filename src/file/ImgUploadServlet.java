@@ -37,6 +37,7 @@ public class ImgUploadServlet extends HttpServlet {
             upload.setSizeMax(4194304); // 设置最大文件尺寸，这里是4MB
 
             List<FileItem> items = upload.parseRequest(request);// 得到所有的文件
+            System.out.println(items);
             Iterator<FileItem> i = items.iterator();
             while (i.hasNext()) {
                 FileItem fi = (FileItem) i.next();
