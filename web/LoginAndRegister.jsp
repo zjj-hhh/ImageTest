@@ -50,21 +50,20 @@
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="login">
+<body class="login" onload="initLoginAndRegisterPage()">
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler"></div>
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGO -->
 <div class="logo">
-	<a href="index.jsp"> <img
-			src="assets/admin/layout4/img/logo-big.png" alt="" />
+	<a href="index.jsp"> <img src="assets/admin/layout4/img/logo-big.png" alt="" />
 	</a>
 </div>
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
 <div class="content">
 	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form" action="login" method="post">
+	<div class="login-form" action="login" method="post">
 		<h3 class="form-title">Sign In</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
@@ -73,38 +72,64 @@
 		<div class="form-group">
 			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 			<label class="control-label visible-ie8 visible-ie9">Username</label>
-			<input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="login_username" />
+			<input id="login-username" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="login_username" />
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Password</label>
-			<input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="login_password" />
+			<input id="login-password" class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="login_password" />
 		</div>
 		<div class="form-actions">
-			<button type="submit" class="btn btn-success uppercase">Login</button>
+			<button id="login-submit-btn" type="button" class="btn btn-success uppercase">Login</button>
 			<label class="rememberme check">
 				<input type="checkbox" name="remember" value="1" />Remember
 			</label> <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
 		</div>
-	</form>
-	<div class="create-account">
-		<p>
-			<a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>
-		</p>
+		<div class="create-account">
+			<p>
+				<a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>
+			</p>
+		</div>
 	</div>
 	<!-- END LOGIN FORM -->
 	<!-- BEGIN FORGOT PASSWORD FORM -->
-	<form class="forget-form" action="sendMailServlet" method="post">
+
+	<div id="form_email" class="forget-form" action="" method="post">
 		<h3>Forget Password ?</h3>
 		<p>Enter your e-mail address below to reset your password.</p>
 		<div class="form-group">
-			<input class="form-control placeholder-no-fix" type="text"
-				   autocomplete="off" placeholder="Email" name="email" />
+			<label class="control-label visible-ie8 visible-ie9">Email</label>
+			<input id="send-mail" class="form-control placeholder-no-fix" type="text" placeholder="Please Enter Your Email" name="Email" />
 		</div>
 		<div class="form-actions">
-			<button type="button" id="back-btn" class="btn btn-default">Back</button>
-			<button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
+			<button type="button" id="sendEmail-back-btn" class="btn btn-default">Back</button>
+			<button type="button" id="sendEmail-submit-btn" class="btn btn-success uppercase pull-right">Submit</button>
 		</div>
-	</form>
+	</div>
+    <div id="form_reset_password" class="resetPassword-form" action="" method="post">
+        <h3>Reset your password</h3>
+        <p>Please enter the account details below:</p>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">New Password</label>
+			<input id="forget-account-number" class="form-control placeholder-no-fix" type="text" placeholder="Please Enter Your Account" name="ForgetAccountNumber" />
+		</div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">New Password</label>
+            <input id="new-password-one" class="form-control placeholder-no-fix" type="password" placeholder="Please Enter The New Password" name="ResetPasswordOne" />
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">New Password</label>
+            <input id="new-password-two" class="form-control placeholder-no-fix" type="password" placeholder="Please Retype The New Password" name="ResetPasswordTwo" />
+        </div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">verify code</label>
+			<input id="forget-verify-code" class="form-control placeholder-no-fix" type="text" placeholder="Please enter the verify code" name="forget_verify_code" />
+		</div>
+        <div class="form-actions">
+            <button type="button" id="forget-back-btn" class="btn btn-default">Back</button>
+            <button type="button" id="resetPassword-submit-btn" class="btn btn-success uppercase pull-right">Submit</button>
+        </div>
+    </div>
+
 	<!-- END FORGOT PASSWORD FORM -->
 	<!-- BEGIN REGISTRATION FORM -->
 	<div id="form_register" class="register-form" action="" method="post">
@@ -112,12 +137,12 @@
 		<p class="hint">Enter your personal details below:</p>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Full Name</label>
-			<input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname" />
+			<input id="register_fullname" class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname" />
 		</div>
 		<div class="form-group">
 			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 			<label class="control-label visible-ie8 visible-ie9">Email</label>
-			<input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email" />
+			<input id="register_mailbox" class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email" />
 		</div>
 
 
@@ -134,15 +159,24 @@
 			<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
 			<input id="rpassword" class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword" />
 		</div>
-
-		<div class="form-actions">
+        <div class="form-group">
+			<div style="float:left">
+            	<label class="control-label visible-ie8 visible-ie9">verify code</label>
+            	<input id="register-verify-code" style="width:200px" class="form-control placeholder-no-fix" type="text" placeholder="Verification code" name="register_verify_code" />
+			</div>
+			<div>
+				<label class="control-label visible-ie8 visible-ie9">SendMail</label>
+				<button type="button" id="register-sendmail-btn" style="height: 43px" class="btn btn-success uppercase pull-right">SendMail</button>
+			</div>
+		</div>
+		<div style="margin-top: 70px">
 			<button type="button" id="register-back-btn" class="btn btn-default">Back</button>
 			<button type="button" id="register-submit-btn" class="btn btn-success uppercase pull-right">Submit</button>
 		</div>
 	</div>
 	<!-- END REGISTRATION FORM -->
 </div>
-<div class="copyright">图像检测分类系统</div>
+<div class="copyright">2020 期货交易系统 0.1</div>
 <!-- END LOGIN -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->

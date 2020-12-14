@@ -6,6 +6,6 @@ import java.util.List;
 import deal.entity.*;
 import deal.entity.Page;
 
-public interface Iuser {
-    public List<usershow> queryUsershowByPage(Page page) throws SQLException;
+public interface Iorder {
+    public List<order> queryOrderByPage(Page page) throws SQLException;
 }

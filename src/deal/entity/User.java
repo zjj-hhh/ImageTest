@@ -1,6 +1,7 @@
 package deal.entity;
 
 import java.io.Serializable;
+import java.security.Timestamp;
 
 public class User implements Serializable{
 	private String userid;

@@ -1,14 +1,17 @@
 package deal.daoimpl;
 
-import deal.dao.UserDAO;
-import deal.entity.Page;
-import deal.entity.User;
-import deal.util.JDBCUtil;
-
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import deal.dao.UserDAO;
+import deal.entity.Page;
+import deal.entity.User;
+import deal.entity.User;
+import deal.util.JDBCUtil;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class UserDAOImpl implements UserDAO {
 
@@ -39,21 +42,21 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return user;
 	}
-
-
+	
+	
 	//用户注册过程，判断用户名存在否
 	public User userToRegister(String username) {
 		User user = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-
+		
 		try {
 			connection = JDBCUtil.getConnection();
 			preparedStatement = connection.prepareStatement("select username from users where username=?");
 			preparedStatement.setObject(1, username);
 			resultSet = preparedStatement.executeQuery();
-
+			
 			while (resultSet.next()) {
 				user = new User();
 				user.setUsername(resultSet.getString("USERNAME"));
@@ -66,9 +69,9 @@ public class UserDAOImpl implements UserDAO {
 		return user;
 	}
 
-
+	
 	//用户注册过程，创建新用户
-	public int userRegister(String username, String password) {
+	public int userRegister(String username, String password,String mailbox,String fullname) {
 		User user = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -79,13 +82,44 @@ public class UserDAOImpl implements UserDAO {
 			SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 			Date date = new Date(System.currentTimeMillis());
 
-			preparedStatement = connection.prepareStatement("insert into users (username,password,authority,createTime) values(?,?,?,?)");
+			preparedStatement = connection.prepareStatement("insert into users (username,password,mailbox,authority,createTime,fullname) values(?,?,?,?,?,?)");
 			preparedStatement.setObject(1, username);
 			preparedStatement.setObject(2, password);
-			preparedStatement.setObject(3, "user");
-			preparedStatement.setObject(4, date);
+			preparedStatement.setObject(3,mailbox);
+			preparedStatement.setObject(4, "user");
+			preparedStatement.setObject(5, date);
+			preparedStatement.setObject(6,fullname);
 			executeCount = preparedStatement.executeUpdate();
 			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.closeUpdate(preparedStatement, connection);
+		}
+		return executeCount;
+	}
+
+	//用户重置密码的过程
+	@Override
+	public int resetUserPassword(String accountNumber,String newPassword, HttpServletRequest request){
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String mailBox=request.getSession().getAttribute("usersEmail").toString();
+		System.out.println(mailBox);
+		int executeCount = 0;
+
+		try {
+			connection = JDBCUtil.getConnection();
+
+			preparedStatement = connection.prepareStatement("update users set password=? where username=? and mailbox=?");
+			preparedStatement.setObject(1, newPassword);
+			preparedStatement.setObject(2, accountNumber);
+			preparedStatement.setObject(3,mailBox);
+
+			executeCount =preparedStatement.executeUpdate();
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

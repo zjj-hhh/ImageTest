@@ -1,12 +1,13 @@
 package deal.daoimpl;
 
-import deal.dao.IpageDao;
-import deal.util.JDBCUtil;
-
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import deal.dao.IpageDao;
+import deal.util.JDBCUtil;
 
 public class PageDaoImpl implements IpageDao {
 	@Override

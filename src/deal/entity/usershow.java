@@ -1,5 +1,8 @@
 package deal.entity;
 
+import java.io.Serializable;
+import java.security.Timestamp;
+
 public class usershow{
     private String show_userid;
     private String show_username;

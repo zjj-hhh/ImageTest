@@ -1,16 +1,34 @@
 package deal.page;
 
-import deal.util.JDBCUtil;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
+import deal.dao.UserDAO;
+import deal.entity.User;
+import deal.util.JDBCUtil;
+import deal.daoimpl.GpDaoImpl;
+import deal.daoimpl.PageDaoImpl;
+import deal.entity.Page;
+import deal.entity.User;
+import deal.entity.gp;
+import deal.util.JDBCUtil;
+import netscape.javascript.JSObject;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONArray;
 
 @WebServlet(name = "managerPageServlet")
 public class managerPageServlet extends HttpServlet {
