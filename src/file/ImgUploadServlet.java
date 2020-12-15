@@ -80,7 +80,7 @@ public class ImgUploadServlet extends HttpServlet {
                     String imgname = new String(fi.getName().getBytes(), "utf-8");
                     String imgpath = uploadPath + "//"+ new String(fi.getName().getBytes(), "utf-8");
                     String username = (String)session.getAttribute("loginUsername");
-                    sql = "insert into img (imgname,imgpath,username,count) values('" + imgname + "','" + imgpath + "','"+ username +"',"+ count +")";
+                    sql = "replace into img (imgname,imgpath,username,count) values('" + imgname + "','" + imgpath + "','"+ username +"',"+ count +")";
                     st.executeUpdate(sql);
                     fileWritter.write(new String(fi.getName().getBytes(), "utf-8") + "\r\n");
                     System.out.println(new String(fi.getName().getBytes(), "utf-8"));
@@ -88,8 +88,11 @@ public class ImgUploadServlet extends HttpServlet {
             }
             fileWritter.flush();
             fileWritter.close();
-
+            Process proc = Runtime.getRuntime().exec("python  E:\\upload\\ImageTest.py");
+            System.out.println("运行至此");
+            proc.waitFor();
             //清空 current.txt
+            System.out.print("upload succeed");
             fileWritter = new FileWriter(file);
             fileWritter.write("");
             fileWritter.flush();
@@ -97,7 +100,6 @@ public class ImgUploadServlet extends HttpServlet {
             rs.close();
             st.close();
             con.close();
-            System.out.print("upload succeed");
         } catch (Exception e) {
 
         }
