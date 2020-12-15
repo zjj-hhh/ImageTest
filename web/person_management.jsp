@@ -1,8 +1,27 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: jxh
+  Date: 2020/11/8
+  Time: 15:46
+  To change this template use File | Settings | File Templates.
+--%>
+<%--
+  Created by IntelliJ IDEA.
+  User: jxh
+  Date: 2020/11/8
+  Time: 15:46
+  To change this template use File | Settings | File Templates.
+--%>
 <%@page language="java"
         import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id="gp" scope="page" class="deal.daoimpl.GpDaoImpl"/>
+<jsp:useBean id="usershow" scope="page" class="deal.daoimpl.usershowImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
+<<<<<<< HEAD
+<jsp:useBean id="user" scope="page" class="deal.daoimpl.UserDAOImpl"/>
+=======
+
+>>>>>>> zjj
 <%
     //判断是否未登录，用的session判断，可用filter，之后再说
     String name=(String)session.getAttribute("loginUsername");
@@ -32,14 +51,12 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>图像检测系统</title>
+    <title>期货交易系统</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta content="" name="description"/>
     <meta content="" name="author"/>
-    <meta name="viewport"content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-    <link href="css/uploadimg.css" rel="stylesheet" type="text/css" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
     <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -453,7 +470,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <span id="nameSpan" class="username username-hide-on-mobile"></span>
                             <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-<%--                            <img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>--%>
+                            <img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
@@ -515,12 +532,12 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-<%--                <li class="start ">--%>
-<%--                    <a href="index.jsp">--%>
-<%--                        <i class="icon-home"></i>--%>
-<%--                        <span class="title">主页</span>--%>
-<%--                    </a>--%>
-<%--                </li>--%>
+                <%--                <li class="start ">--%>
+                <%--                    <a href="index.jsp">--%>
+                <%--                        <i class="icon-home"></i>--%>
+                <%--                        <span class="title">主页</span>--%>
+                <%--                    </a>--%>
+                <%--                </li>--%>
                 <li class="active open">
                     <a href="index.jsp">
                         <i class="icon-graph"></i>
@@ -538,7 +555,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <a href="person_img.jsp">查看图库</a>
                         </li>
                         <li>
-                            <a href="person_management.jsp">修改信息</a>
+                            <a href="person_management.jsp">修改个人信息</a>
                         </li>
                     </ul>
                 </li>
@@ -577,199 +594,202 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN PAGE HEAD -->
-<%--            <div class="page-head">--%>
-<%--                <div class="page-title">--%>
-<%--                    <h1>行情 <small>行情列表</small></h1>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <ul class="page-breadcrumb breadcrumb">--%>
-<%--                <li>--%>
-<%--                    <a href="index.jsp">主页</a>--%>
-<%--                    <i class="fa fa-circle"></i>--%>
-<%--                </li>--%>
-<%--                <li>--%>
-<%--                    <a href="#">行情</a>--%>
-<%--                </li>--%>
-<%--            </ul>--%>
-<%--            <!-- END PAGE HEAD -->--%>
-<%--            <!-- END PAGE HEADER-->--%>
-<%--            <!-- BEGIN PAGE CONTENT-->--%>
-<%--            <div class="row">--%>
-<%--                <div class="col-md-12">--%>
-<%--                    <!-- Begin: life time stats -->--%>
-<%--                    <div class="portlet light">--%>
-<%--                        <div class="portlet-title">--%>
-<%--                            <div class="portlet-body">--%>
-<%--                                <div class="table-container">--%>
-<%--                                    <table class="table table-striped table-bordered table-hover" id="datatable_orders">--%>
-<%--                                        <thead>--%>
-<%--                                        <tr role="row" class="heading">--%>
-<%--                                            <th width="10%">--%>
-<%--                                                编号--%>
-<%--                                            </th>--%>
-<%--                                            <th width="10%">--%>
-<%--                                                股票名称--%>
-<%--                                            </th>--%>
-<%--                                            <th width="10%">--%>
-<%--                                                最新价--%>
-<%--                                            </th>--%>
-<%--                                            <th width="10%">--%>
-<%--                                                涨跌额--%>
-<%--                                            </th>--%>
-<%--                                            <th width="10%">--%>
-<%--                                                涨跌幅--%>
-<%--                                            </th>--%>
-<%--                                            <th width="10%">--%>
-<%--                                                交易操作--%>
-<%--                                            </th>--%>
-<%--                                        </tr>--%>
-<%--                                        <%--%>
-<%--                                            request.setCharacterEncoding("UTF-8");--%>
-<%--                                            int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));--%>
+            <div class="page-head">
+                <div class="page-title">
+                    <h1>修改个人信息</h1>
+                </div>
+            </div>
+            <%--            <ul class="page-breadcrumb breadcrumb">--%>
+            <%--                <li>--%>
+            <%--                    <a href="index.jsp">主页</a>--%>
+            <%--                    <i class="fa fa-circle"></i>--%>
+            <%--                </li>--%>
+            <%--                <li>--%>
+            <%--                    <a href="#">后台管理</a>--%>
+            <%--                    <i class="fa fa-circle"></i>--%>
+            <%--                </li>--%>
+            <%--                <li>--%>
+            <%--                    <a href="#">用户管理</a>--%>
+            <%--                </li>--%>
+            <%--            </ul>--%>
+            <!-- END PAGE TITLE -->
+            <div class="portlet light ">
+                <%--                <div class="portlet-title">--%>
+                <%--                    <div class="caption">--%>
+                <%--                        <i class="icon-basket font-green-sharp"></i>--%>
+                <%--                        <span class="caption-subject font-green-sharp bold uppercase">用户信息列表</span>--%>
+                <%--                        <span class="caption-helper"></span>--%>
+                <%--                    </div>--%>
+                <%--                    <div class="actions">--%>
+                <%--                        <a href="javascript:;" class="btn btn-circle btn-default">--%>
+                <%--                            <i class="fa fa-plus"></i>--%>
+                <%--                            <span class="hidden-480">新增用户</span>--%>
+                <%--                        </a>--%>
+                <%--                        <a href="javascript:;" class="btn btn-circle btn-default">--%>
+                <%--                            <i class="fa fa-minus"></i>--%>
+                <%--                            <span class="hidden-480">删除用户</span>--%>
+                <%--                        </a>--%>
+                <%--                        <div class="btn-group">--%>
+                <%--                            <a class="btn btn-default btn-circle" href="javascript:;" data-toggle="dropdown">--%>
+                <%--                                <i class="fa fa-share"></i>--%>
+                <%--                                <span class="hidden-480">工具 </span>--%>
+                <%--                                <i class="fa fa-angle-down"></i>--%>
+                <%--                            </a>--%>
+                <%--                            <ul class="dropdown-menu pull-right">--%>
+                <%--                                <li>--%>
+                <%--                                    <a href="javascript:;" onclick="window.open('exportExcel1.jsp')">导出到excel </a>--%>
+                <%--                                </li>--%>
+                <%--                                <li>--%>
+                <%--                                    <a href="javascript:;" onclick="">导出到csv </a>--%>
+                <%--                                </li>--%>
+                <%--                                <li>--%>
+                <%--                                    <a href="javascript:;" onclick="">导出到xml </a>--%>
+                <%--                                </li>--%>
+                <%--                                <li class="divider">--%>
+                <%--                                </li>--%>
+                <%--                                <li>--%>
+                <%--                                    <a href="javascript:;" id="usersManagement" onclick="jumpToPrint(id)">打印 </a>--%>
+                <%--                                </li>--%>
+                <%--                            </ul>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <div class="portlet-body">
+                    <div class="row number-stats margin-bottom-30"></div>
+                    <div class="table-scrollable table-scrollable-borderless">
+                        <table id = "user_management_table"class="table table-hover table-light">
+                            <thead>
+                            <tr class="uppercase">
+                                <th>用户id</th>
+                                <th>用户名</th>
+                                <th>密码</th>
+                                <th>权限</th>
+                                <th>创建时间</th>
+                            </tr>
+                            </thead>
+                            <%
+                                request.setCharacterEncoding("UTF-8");
+                                int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
 
 
-<%--                                            int pageSize = 15;--%>
-<%--                                            int totalPage = 0;--%>
-<%--                                            totalPage = pg.getTotalPage(pageSize);--%>
+                                int pageSize = 15;
+                                int totalPage = 0;
+                                totalPage = pg.getTotalPage(pageSize);
 
-<%--                                            int prePage = start - 1 >= 0 ? start - 1 : start + 1;--%>
-<%--                                            int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;--%>
-<%--                                            request.setAttribute("totalPage", totalPage);--%>
-<%--                                            request.setAttribute("prePage", prePage);--%>
-<%--                                            request.setAttribute("nextPage", nextPage);--%>
-<%--                                            Page pg1 = new Page(start, pageSize);--%>
-<%--                                            List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1);--%>
-<%--                                            //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");--%>
-<%--                                            for (gp u : currentGp) {--%>
-<%--                                        %>--%>
-<%--                                        <tr role="row" class="filter">--%>
-<%--                                            <td>--%>
-<%--                                                <input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_id()%>">--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_name()%>">--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price()%>">--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getgp_adn()%>">--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_ad()%>">--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price()%>'">开仓</button>--%>
-<%--                                                <button onclick="window.open('http://image.sinajs.cn/newchart/daily/n/<%=u.getgp_id()%>.gif')">K线图</button>--%>
-<%--                                            </td>--%>
-<%--                                        </tr>--%>
-<%--                                        <%--%>
-<%--                                            }--%>
-<%--                                        %>--%>
-<%--                                        </thead>--%>
-<%--                                        <tbody>--%>
-<%--                                        </tbody>--%>
-<%--                                    </table>--%>
-<%--                                    <nav>--%>
-<%--                                        <ul class="pagination">--%>
-<%--                                            <li><a href="futures_menu.jsp?start=0"> <span>首页</span>--%>
-<%--                                            </a></li>--%>
-<%--                                            <li><a href="futures_menu.jsp?start=${requestScope.prePage }">--%>
-<%--                                                <span>上一页</span>--%>
-<%--                                            </a></li>--%>
-<%--                                            <li><a href="futures_menu.jsp?start=${requestScope.nextPage }">--%>
-<%--                                                <span>下一页</span>--%>
-<%--                                            </a></li>--%>
-<%--                                            <li><a--%>
-<%--                                                    href="futures_menu.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>--%>
-<%--                                            </a></li>--%>
-<%--                                        </ul>--%>
-<%--                                    </nav>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <!-- End: life time stats -->--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <!-- END PAGE CONTENT-->--%>
-<%--            </div>--%>
-            <div>
-            <div class="filterPop" onclick="toHide()"></div>
-            <div class="setPops">
-                <img src="" alt="" width="100%" height="100%">
-            </div>   <!-- 添加遮罩层 -->
+                                int prePage = start - 1 >= 0 ? start - 1 : start + 1;
+                                int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
+                                request.setAttribute("totalPage", totalPage);
+                                request.setAttribute("prePage", prePage);
+                                request.setAttribute("nextPage", nextPage);
+                                Page pg1 = new Page(start, pageSize);
+                                List<usershow> currentUsershow = (List<usershow>) usershow.queryUsershowByPage(pg1);
+                                //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
+                                for (usershow u : currentUsershow) if(u.getshow_username().equals(name)){
+                            %>
+                            <tr>
+                                <td><input type="text" id="<%="update_userID"+u.getshow_userid()%>" class="form-control form-filter input-sm" readonly="readonly" value="<%=u.getshow_userid()%>"/>
+                                </td>
+                                <td><input type="text" id="<%="update_user_name"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_username()%>"/>
+                                </td>
+                                <td><input type="text" id="<%="update_user_password"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_password()%>"/>
+                                </td>
+                                <td><input type="text" id="<%="update_user_authority"+u.getshow_userid()%>" class="form-control form-filter input-sm" readonly="readonly" value="<%=u.getshow_authority()%>"/>
+                                </td>
+                                <td><input type="text" id="<%="update_user_createTime"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_createTime()%>"/>
+                                    <%--                                </td>--%>
+                                    <%--                                <td><input type="text" id="<%="update_user_money"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_money()%>"/>--%>
+                                    <%--                                </td>--%>
+                                <td>
+                                    <button class="btn btn-success uppercase" onclick="updateUser('<%=u.getshow_userid()%>')">更改信息</button>
+                                </td>
+                            </tr>
+                            <%
+                                }
+                            %>
 
-            <div class="Box">图片上传</div>
-            <div class="Box">(最多可同时上传10张图片进行检测分类)</div>
-            <span class="Box" id="innerText"></span>
-            <div class="Box1">
-                <div class="productImg">
-                    <div id="uploadBox"></div>
-                    <div class="uploadDIv">
-                        <span>+</span><input type="file" name="file" multiple="multiple" id="inputs" accept="image/*" class='fileTest' multiple="multiple" />
+                        </table>
+                        <nav>
+                            <ul class="pagination">
+                                <li><a href="users_management.jsp?start=0"> <span>首页</span>
+                                </a></li>
+                                <li><a href="users_management.jsp?start=${requestScope.prePage }">
+                                    <span>上一页</span>
+                                </a></li>
+                                <li><a href="users_management.jsp?start=${requestScope.nextPage }">
+                                    <span>下一页</span>
+                                </a></li>
+                                <li><a
+                                        href="users_management.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
+                                </a></li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-            <div style="text-align:center">
-                <button id="start-upload" href="javascript:void(0);" onclick="uploadFile();">上传</button>
-            </div>
-            </div>
-<%--        </div>--%>
-        <!-- END CONTENT -->
+            <!-- END PAGE HEAD -->
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+
+            <!-- END PAGE CONTENT-->
+        </div>
     </div>
-    <!-- END CONTAINER -->
-    <!-- BEGIN FOOTER -->
-<%--    <div class="page-footer">--%>
-<%--        <div class="page-footer-inner">--%>
-<%--            2020@xm20期货交易系统1.00--%>
-<%--        </div>--%>
-<%--        <div class="scroll-to-top">--%>
-<%--            <i class="icon-arrow-up"></i>--%>
-<%--        </div>--%>
+    <!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<%--<div class="page-footer">--%>
+<%--    <div class="page-footer-inner">--%>
+<%--        2014 &copy; Metronic by keenthemes. <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>--%>
 <%--    </div>--%>
-    <!-- END FOOTER -->
-    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-    <!-- BEGIN CORE PLUGINS -->
-    <!--[if lt IE 9]>
-    <script src="assets/global/plugins/respond.min.js"></script>
-    <script src="assets/global/plugins/excanvas.min.js"></script>
-    <![endif]-->
-    <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-    <script src="assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
-    <script type="text/javascript" src="assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
-    <script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
-    <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
-    <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
-    <script src="assets/global/scripts/datatable.js"></script>
-    <script src="js/global/initializePage.js" type="text/javascript"></script>
-        <script src="js/uploadimg.js" type="text/javascript"></script>
-    <%--<script src="assets/admin/pages/scripts/ecommerce-orders.js"></script>--%>
-    <!-- END PAGE LEVEL SCRIPTS -->
-    <script>
-        jQuery(document).ready(function() {
-            Metronic.init(); // init metronic core components
-            Layout.init(); // init current layout
-            Demo.init(); // init demo features
-            EcommerceOrders.init();
-        });
-    </script>
-    <!-- END JAVASCRIPTS -->
+<%--    <div class="scroll-to-top">--%>
+<%--        <i class="icon-arrow-up"></i>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="assets/global/plugins/respond.min.js"></script>
+<script src="assets/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
+<script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="assets/global/scripts/datatable.js"></script>
+<script src="assets/admin/pages/scripts/ecommerce-orders.js"></script>
+<script src="js/global/initializePage.js" type="text/javascript"></script>
+<script src="js/global/Printing.js" type="text/javascript"></script>
+<script src="js/userManagementJS.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+    jQuery(document).ready(function() {
+        Metronic.init(); // init metronic core components
+        Layout.init(); // init current layout
+        Demo.init(); // init demo features
+        EcommerceOrders.init();
+    });
+</script>
+<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>
+

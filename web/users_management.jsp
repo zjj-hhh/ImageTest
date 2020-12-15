@@ -538,13 +538,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="title">主页</span>
                     </a>
                 </li>
-                <li>
-                    <a href="futures_menu.jsp">
-                        <i class="icon-graph"></i>
-                        <span class="title">行情</span>
-                        <%--					<span class="arrow"></span>--%>
-                    </a>
-                </li>
+<%--                <li>--%>
+<%--                    <a href="futures_menu.jsp">--%>
+<%--                        <i class="icon-graph"></i>--%>
+<%--                        <span class="title">行情</span>--%>
+<%--                        &lt;%&ndash;					<span class="arrow"></span>&ndash;%&gt;--%>
+<%--                    </a>--%>
+<%--                </li>--%>
                 <li>
                     <a href="javascript:;">
                         <i class="icon-user"></i>
@@ -553,24 +553,22 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="users_money.jsp">资产管理</a>
+                            <a href="person_img.jsp">查看图片</a>
                         </li>
                         <li>
-                            <a href="users_oder.jsp">订单管理</a>
+                            <a href="person_management.jsp">修改个人信息</a>
                         </li>
                     </ul>
                 </li>
-                <li>
                 <li class="active open">
                     <a href="javascript:;"> <i class="icon-users"></i>
                         <span class="title">后台管理</span>
                         <span class="arrow open"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="buy_management.jsp">订单管理</a></li>
                         <li><a href="users_management.jsp">用户管理</a></li>
-                    </ul>
-                </li>
+<%--                    </ul>--%>
+<%--                </li>--%>
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>
@@ -608,61 +606,61 @@ License: You must have a valid license purchased only from themeforest(the above
                     <h1>用户管理 <small>用户信息列表</small></h1>
                 </div>
             </div>
-            <ul class="page-breadcrumb breadcrumb">
-                <li>
-                    <a href="index.jsp">主页</a>
-                    <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <a href="#">后台管理</a>
-                    <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <a href="#">用户管理</a>
-                </li>
-            </ul>
+<%--            <ul class="page-breadcrumb breadcrumb">--%>
+<%--                <li>--%>
+<%--                    <a href="index.jsp">主页</a>--%>
+<%--                    <i class="fa fa-circle"></i>--%>
+<%--                </li>--%>
+<%--                <li>--%>
+<%--                    <a href="#">后台管理</a>--%>
+<%--                    <i class="fa fa-circle"></i>--%>
+<%--                </li>--%>
+<%--                <li>--%>
+<%--                    <a href="#">用户管理</a>--%>
+<%--                </li>--%>
+<%--            </ul>--%>
                 <!-- END PAGE TITLE -->
             <div class="portlet light ">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="icon-basket font-green-sharp"></i>
-                        <span class="caption-subject font-green-sharp bold uppercase">用户信息列表</span>
-                        <span class="caption-helper"></span>
-                    </div>
-                    <div class="actions">
-                        <a href="javascript:;" class="btn btn-circle btn-default">
-                            <i class="fa fa-plus"></i>
-                            <span class="hidden-480">新增用户</span>
-                        </a>
-                        <a href="javascript:;" class="btn btn-circle btn-default">
-                            <i class="fa fa-minus"></i>
-                            <span class="hidden-480">删除用户</span>
-                        </a>
-                        <div class="btn-group">
-                            <a class="btn btn-default btn-circle" href="javascript:;" data-toggle="dropdown">
-                                <i class="fa fa-share"></i>
-                                <span class="hidden-480">工具 </span>
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li>
-                                    <a href="javascript:;" onclick="window.open('exportExcel1.jsp')">导出到excel </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" onclick="">导出到csv </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" onclick="">导出到xml </a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="javascript:;" id="usersManagement" onclick="jumpToPrint(id)">打印 </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+<%--                <div class="portlet-title">--%>
+<%--                    <div class="caption">--%>
+<%--                        <i class="icon-basket font-green-sharp"></i>--%>
+<%--                        <span class="caption-subject font-green-sharp bold uppercase">用户信息列表</span>--%>
+<%--                        <span class="caption-helper"></span>--%>
+<%--                    </div>--%>
+<%--                    <div class="actions">--%>
+<%--                        <a href="javascript:;" class="btn btn-circle btn-default">--%>
+<%--                            <i class="fa fa-plus"></i>--%>
+<%--                            <span class="hidden-480">新增用户</span>--%>
+<%--                        </a>--%>
+<%--                        <a href="javascript:;" class="btn btn-circle btn-default">--%>
+<%--                            <i class="fa fa-minus"></i>--%>
+<%--                            <span class="hidden-480">删除用户</span>--%>
+<%--                        </a>--%>
+<%--                        <div class="btn-group">--%>
+<%--                            <a class="btn btn-default btn-circle" href="javascript:;" data-toggle="dropdown">--%>
+<%--                                <i class="fa fa-share"></i>--%>
+<%--                                <span class="hidden-480">工具 </span>--%>
+<%--                                <i class="fa fa-angle-down"></i>--%>
+<%--                            </a>--%>
+<%--                            <ul class="dropdown-menu pull-right">--%>
+<%--                                <li>--%>
+<%--                                    <a href="javascript:;" onclick="window.open('exportExcel1.jsp')">导出到excel </a>--%>
+<%--                                </li>--%>
+<%--                                <li>--%>
+<%--                                    <a href="javascript:;" onclick="">导出到csv </a>--%>
+<%--                                </li>--%>
+<%--                                <li>--%>
+<%--                                    <a href="javascript:;" onclick="">导出到xml </a>--%>
+<%--                                </li>--%>
+<%--                                <li class="divider">--%>
+<%--                                </li>--%>
+<%--                                <li>--%>
+<%--                                    <a href="javascript:;" id="usersManagement" onclick="jumpToPrint(id)">打印 </a>--%>
+<%--                                </li>--%>
+<%--                            </ul>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
                 <div class="portlet-body">
                     <div class="row number-stats margin-bottom-30"></div>
                     <div class="table-scrollable table-scrollable-borderless">
@@ -674,7 +672,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <th>密码</th>
                                 <th>权限</th>
                                 <th>创建时间</th>
-                                <th>余额</th>
                             </tr>
                             </thead>
                             <%
@@ -706,9 +703,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <td><input type="text" id="<%="update_user_authority"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_authority()%>"/>
                                 </td>
                                 <td><input type="text" id="<%="update_user_createTime"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_createTime()%>"/>
-                                </td>
-                                <td><input type="text" id="<%="update_user_money"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_money()%>"/>
-                                </td>
+<%--                                </td>--%>
+<%--                                <td><input type="text" id="<%="update_user_money"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_money()%>"/>--%>
+<%--                                </td>--%>
                                 <td>
                                     <button class="btn btn-success uppercase" onclick="deleteUser('<%=u.getshow_userid()%>')">删除用户</button>
                                 </td>
@@ -751,14 +748,14 @@ License: You must have a valid license purchased only from themeforest(the above
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
-<div class="page-footer">
-    <div class="page-footer-inner">
-        2014 &copy; Metronic by keenthemes. <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
-    </div>
-    <div class="scroll-to-top">
-        <i class="icon-arrow-up"></i>
-    </div>
-</div>
+<%--<div class="page-footer">--%>
+<%--    <div class="page-footer-inner">--%>
+<%--        2014 &copy; Metronic by keenthemes. <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>--%>
+<%--    </div>--%>
+<%--    <div class="scroll-to-top">--%>
+<%--        <i class="icon-arrow-up"></i>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->

@@ -81,4 +81,22 @@
     <servlet-name>resetPasswordServlet</servlet-name>
     <url-pattern>/resetPasswordServlet</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>updateUserServlet</servlet-name>
+    <servlet-class>deal.updateUser.updateUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateUserServlet</servlet-name>
+    <url-pattern>/updateUserServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>deleteUserServlet</servlet-name>
+    <servlet-class>deal.deleteUser.deleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteUserServlet</servlet-name>
+    <url-pattern>/deleteUserServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

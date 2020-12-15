@@ -11,7 +11,7 @@ function initMenu(authority){
             "                        <span class=\"arrow\"></span>\n" +
             "                    </a>\n" +
             "                    <ul class=\"sub-menu\">\n" +
-            "                        <li><a href=\"buy_management.jsp\">订单管理</a></li>\n" +
+            // "                        <li><a href=\"buy_management.jsp\">订单管理</a></li>\n" +
             "                        <li><a href=\"users_management.jsp\">用户管理</a></li>\n" +
             "                    </ul>";
         //$("#menu_admin").hide();

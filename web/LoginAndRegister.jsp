@@ -10,7 +10,7 @@
 <!-- BEGIN HEAD -->
 <head>
 	<meta charset="utf-8" />
-	<title>xm20期货交易系统</title>
+	<title>图像检测分类系统登录界面</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -179,7 +179,7 @@
 	</div>
 	<!-- END REGISTRATION FORM -->
 </div>
-<div class="copyright">2020 期货交易系统 0.1</div>
+<%--<div class="copyright">2020 期货交易系统 0.1</div>--%>
 <!-- END LOGIN -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
