@@ -17,7 +17,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 @WebServlet(name = "ImgUploadServlet")
 public class ImgUploadServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private String uploadPath = "D:\\upload"; // 上传文件的目录
+    private String uploadPath = "D:\\upload";// 上传文件的目录
     File tempPathFile;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
