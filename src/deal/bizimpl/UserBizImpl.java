@@ -6,9 +6,7 @@ import deal.biz.UserBiz;
 import deal.dao.UserDAO;
 import deal.daoimpl.UserDAOImpl;
 import deal.entity.User;
-import deal.enums.UserLoginEnum;
-import deal.enums.UserRegisterEnum;
-import deal.enums.resetPasswordEnum;
+import deal.enums.*;
 import deal.util.StringUtil;
 
 public class UserBizImpl implements UserBiz {
@@ -30,6 +28,7 @@ public class UserBizImpl implements UserBiz {
 		}
 		// 登录成功后 把当前登录成功后的用户 存入到SESSION中 基本是 所有后台的必备功能
 		request.getSession().setAttribute("user", user);
+		request.getSession().setAttribute("userID",user.getUserid());
 		request.getSession().setAttribute("loginUsername", user.getUsername());
 		request.getSession().setAttribute("Authority", user.getAuthority());
 		return UserLoginEnum.USER_LOGIN_SUCCESS.getValue();
@@ -101,6 +100,41 @@ public class UserBizImpl implements UserBiz {
 		}
 		return resetPasswordEnum.RESET_PASSWORD_IS_SUCCESS.getValue();
 	}
+	public String deleteUser(String userID){
 
+		int number = 0;
+		number = userDAO.userDelete(userID);
+		if (number != 0) {
+			return UserDeleteEnum.USER_DELETE_SUCCESS.getValue();
+		}
+		return UserDeleteEnum.USER_IS_NON_EXIST.getValue();
+
+	}
+	public String updateUser(String userID,String userName,String userPassword,String userAuthority){
+		if(StringUtil.isEmpty(userName)){
+			return UserUpdateEnum.USER_NAME_IS_NULL.getValue();
+		}
+
+		if(StringUtil.isEmpty(userPassword)){
+			return UserUpdateEnum.USER_PASSWORD_IS_NULL.getValue();
+		}
+
+		if(StringUtil.isEmpty(userName)){
+			return UserUpdateEnum.USER_AUTHORITY_IS_NULL.getValue();
+		}
+
+		String Manager="manager";
+		String User="user";
+		if(!Manager.equals(userAuthority) && !User.equals(userAuthority)){
+			return UserUpdateEnum.USER_AUTHORITY_IS_INCORRECT.getValue();
+		}
+
+		Integer executeCount =  null;
+		executeCount = userDAO.userUpdate(userID,userName,userPassword,userAuthority);
+		if(executeCount != null){
+			return UserUpdateEnum.USER_UPDATE_IS_SUCCESS.getValue();
+		}
+		return UserUpdateEnum.USER_UPDATE_IS_FAILED.getValue();
+	}
 
 }

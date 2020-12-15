@@ -22,5 +22,9 @@ public interface UserDAO {
 		//进行密码更改
 		int resetUserPassword(String accountNumber,String newPassword, HttpServletRequest request);
 
+		int userDelete(String userID);
+
+		int userUpdate(String userID,String userName,String userPassword,String userAuthority);
+
 		public List<User> queryUserByPage(Page page) throws SQLException;
 }
