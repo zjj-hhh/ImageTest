@@ -128,6 +128,53 @@ public class UserDAOImpl implements UserDAO {
 		return executeCount;
 	}
 
+	//删除用户的过程
+	@Override
+	public int userDelete(String userID){
+		int ret = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = JDBCUtil.getConnection();
+			preparedStatement = connection.prepareStatement("delete from users where userid=?");
+			preparedStatement.setObject(1, userID);
+			ret = preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.closeUpdate(preparedStatement, connection);
+		}
+		return ret;
+	}
+
+	public int userUpdate(String userID,String userName,String userPassword,String userAuthority){
+		User user = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		int executeCount = 0;
+
+		try {
+			connection = JDBCUtil.getConnection();
+
+
+			preparedStatement = connection.prepareStatement("update users set username=?,password=?,authority=? where userid=?");
+			preparedStatement.setObject(1, userName);
+			preparedStatement.setObject(2, userPassword);
+			preparedStatement.setObject(3, userAuthority);
+			preparedStatement.setObject(4, userID);
+
+			executeCount = preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.closeUpdate(preparedStatement, connection);
+		}
+		return executeCount;
+	}
+
 	public Connection con=null;
 	public PreparedStatement pst=null;
 	public Statement sm=null;

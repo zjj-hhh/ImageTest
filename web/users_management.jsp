@@ -666,13 +666,13 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="portlet-body">
                     <div class="row number-stats margin-bottom-30"></div>
                     <div class="table-scrollable table-scrollable-borderless">
-                        <table class="table table-hover table-light">
+                        <table id = "user_management_table"class="table table-hover table-light">
                             <thead>
                             <tr class="uppercase">
                                 <th>用户id</th>
                                 <th>用户名</th>
                                 <th>密码</th>
-                                <th>角色</th>
+                                <th>权限</th>
                                 <th>创建时间</th>
                                 <th>余额</th>
                             </tr>
@@ -695,19 +695,26 @@ License: You must have a valid license purchased only from themeforest(the above
                                 List<usershow> currentUsershow = (List<usershow>) usershow.queryUsershowByPage(pg1);
                                 //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
                                 for (usershow u : currentUsershow) {
-                            %>
+                                           %>
                             <tr>
-                                <td><%=u.getshow_userid()%>
+                                <td><input type="text" id="<%="update_userID"+u.getshow_userid()%>" class="form-control form-filter input-sm" readonly="readonly" value="<%=u.getshow_userid()%>"/>
                                 </td>
-                                <td><%=u.getshow_username()%>
+                                <td><input type="text" id="<%="update_user_name"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_username()%>"/>
                                 </td>
-                                <td><%=u.getshow_password()%>
+                                <td><input type="text" id="<%="update_user_password"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_password()%>"/>
                                 </td>
-                                <td><%=u.getshow_authority()%>
+                                <td><input type="text" id="<%="update_user_authority"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_authority()%>"/>
                                 </td>
-                                <td><%=u.getshow_createTime()%>
+                                <td><input type="text" id="<%="update_user_createTime"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_createTime()%>"/>
                                 </td>
-                                <td><%=u.getshow_money()%>
+                                <td><input type="text" id="<%="update_user_money"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_money()%>"/>
+                                </td>
+                                <td>
+                                    <button class="btn btn-success uppercase" onclick="deleteUser('<%=u.getshow_userid()%>')">删除用户</button>
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-success uppercase" onclick="updateUser('<%=u.getshow_userid()%>')">更改信息</button>
                                 </td>
                             </tr>
                             <%
@@ -785,6 +792,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/admin/pages/scripts/ecommerce-orders.js"></script>
 <script src="js/global/initializePage.js" type="text/javascript"></script>
 <script src="js/global/Printing.js" type="text/javascript"></script>
+<script src="js/userManagementJS.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
     jQuery(document).ready(function() {

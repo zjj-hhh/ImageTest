@@ -81,13 +81,4 @@
     <servlet-name>resetPasswordServlet</servlet-name>
     <url-pattern>/resetPasswordServlet</url-pattern>
   </servlet-mapping>
-
-  <servlet>
-    <servlet-name>ImgUploadServlet</servlet-name>
-    <servlet-class>file.ImgUploadServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ImgUploadServlet</servlet-name>
-    <url-pattern>/ImgUploadServlet</url-pattern>
-  </servlet-mapping>
 </web-app>
