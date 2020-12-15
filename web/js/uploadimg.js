@@ -66,24 +66,27 @@ function toHide() {
 }
 
 function uploadFile(){
-    var fileList = document.getElementById("inputs").files;
-    alert("上传图片成功");
-    for(var i = 0; i < fileList.length; i++){
-        var fileObj = fileList[i]; // 获取文件对象
-        var FileController = "ImgUploadServlet"; // 接收上传文件的后台地址
+    if(a > 0) {
+        var fileList = document.getElementById("inputs").files;
+        for (var i = 0; i < fileList.length; i++) {
+            var fileObj = fileList[i]; // 获取文件对象
+            var FileController = "ImgUploadServlet"; // 接收上传文件的后台地址
+            console.log(a);
+            if (a > 0) {
+                // FormData 对象
+                var form = new FormData();
+                form.append("file", fileObj);// 文件对象
 
-        if(fileObj){
-            // FormData 对象
-            var form = new FormData();
-            form.append("file", fileObj);// 文件对象
-
-            // XMLHttpRequest 对象
-            var xhr = new XMLHttpRequest();
-            xhr.open("post", FileController, true);
-            xhr.send(form);
-
-        }else{
-            alert("未选择文件");
+                // XMLHttpRequest 对象
+                var xhr = new XMLHttpRequest();
+                xhr.open("post", FileController, true);
+                xhr.send(form);
+            }
         }
+        alert("上传成功");
+    }
+    else
+    {
+        alert("未选择文件");
     }
 }
