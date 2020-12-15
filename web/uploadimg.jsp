@@ -32,7 +32,7 @@
     </div>
 </div>
 <div style="text-align:center">
-    <button>上传</button>
+    <button id="start-upload" href="javascript:void(0);" onclick="uploadFile();">上传</button>
 </div>
 </body>
 </html>
